@@ -1,4 +1,9 @@
-import { ExternalLink, Code } from "lucide-react";
+import {
+  ExternalLink,
+  Code,
+  Lightbulb,
+  Wrench,
+} from "lucide-react";
 import { Project } from "@/types";
 
 interface ProjectCardProps {
@@ -8,7 +13,8 @@ interface ProjectCardProps {
 export default function ProjectCard({ project }: ProjectCardProps) {
   const technologies = project.technologies
     .split(",")
-    .map((technology) => technology.trim());
+    .map((technology) => technology.trim())
+    .filter(Boolean);
 
   return (
     <article className="project-card">
@@ -20,6 +26,28 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <h3>{project.title}</h3>
 
         <p>{project.description}</p>
+
+        {project.problem && (
+          <div className="project-detail">
+            <div className="project-detail-title">
+              <Lightbulb size={17} />
+              <strong>Problem</strong>
+            </div>
+
+            <p>{project.problem}</p>
+          </div>
+        )}
+
+        {project.solution && (
+          <div className="project-detail">
+            <div className="project-detail-title">
+              <Wrench size={17} />
+              <strong>Solution</strong>
+            </div>
+
+            <p>{project.solution}</p>
+          </div>
+        )}
 
         <div className="technology-list">
           {technologies.map((technology) => (

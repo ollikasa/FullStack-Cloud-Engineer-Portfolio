@@ -142,7 +142,7 @@ main()
 
 
 
-  import 'dotenv/config';
+import 'dotenv/config';
 import { PrismaClient } from '@prisma/client';
 import { PrismaBetterSqlite3 } from '@prisma/adapter-better-sqlite3';
 
@@ -187,18 +187,17 @@ async function main() {
 
       location: 'Addis Ababa, Ethiopia',
 
-      email: 'YOUR_EMAIL',
+      email: 'oljelikonafo@gmail.com',
 
-      phone: 'YOUR_PHONE',
+      phone: '0907151330',
 
       github:
-        'https://github.com/YOUR_USERNAME',
+        'https://github.com/ollikasa',
 
       linkedin:
-        'https://www.linkedin.com/in/YOUR_USERNAME',
+        'https://www.linkedin.com/in/oljira-likasa-nafabas/',
 
-      website:
-        'https://YOUR_DOMAIN',
+      website: null,
     },
   });
 
