@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Admin {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Profile {
+  id        Int      @id @default(autoincrement())
+  name      String
+  title     String
+  bio       String
+  vision    String?
+  mission   String?
+  location  String?
+  phone     String?
+  email     String?
+  linkedin  String?
+  github    String?
+  website   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Education {
+  id          Int      @id @default(autoincrement())
+  institution String
+  degree      String
+  field       String
+  startYear   Int?
+  endYear     Int?
+  grade       String?
+  description String?
+  createdAt   DateTime @default(now())
+}
+
+model Project {
+  id           Int      @id @default(autoincrement())
+  title        String
+  description  String
+  problem      String?
+  solution     String?
+  technologies String
+  githubUrl    String?
+  liveUrl      String?
+  imageUrl     String?
+  createdAt    DateTime @default(now())
+}
+
+model Certificate {
+  id            Int      @id @default(autoincrement())
+  title         String
+  issuer        String
+  issueDate     String?
+  credentialUrl String?
+  fileUrl       String?
+  createdAt     DateTime @default(now())
+}
+
+model Document {
+  id          Int      @id @default(autoincrement())
+  title       String
+  category    String
+  fileUrl     String
+  description String?
+  createdAt   DateTime @default(now())
+}
