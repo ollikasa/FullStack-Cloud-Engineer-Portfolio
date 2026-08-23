@@ -1,4 +1,4 @@
-import CertificateCard from "@/components/CertificateCard";
+/*import CertificateCard from "@/components/CertificateCard";
 import SectionTitle from "@/components/SectionTitle";
 
 const certificates = [
@@ -36,6 +36,49 @@ export default function CertificatesPage() {
             />
           ))}
         </div>
+      </div>
+    </section>
+  );
+}*/
+
+
+
+
+
+import CertificateCard from "@/components/CertificateCard";
+import SectionTitle from "@/components/SectionTitle";
+import { getCertificates } from "@/lib/api";
+
+export default async function CertificatesPage() {
+  const certificates = await getCertificates();
+
+  return (
+    <section className="section">
+      <div className="container">
+        <SectionTitle
+          eyebrow="CERTIFICATES"
+          title="Professional Learning"
+          description="Certificates and professional training."
+        />
+
+        {certificates.length > 0 ? (
+          <div className="projects-grid">
+            {certificates.map((certificate: any) => (
+              <CertificateCard
+                key={certificate.id}
+                certificate={certificate}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="info-box">
+            <span>Certificates</span>
+            <strong>
+              Professional certificates and training records will be added
+              here.
+            </strong>
+          </div>
+        )}
       </div>
     </section>
   );

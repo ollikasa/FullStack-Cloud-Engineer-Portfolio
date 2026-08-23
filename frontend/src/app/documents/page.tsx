@@ -1,4 +1,4 @@
-import SectionTitle from "@/components/SectionTitle";
+/*import SectionTitle from "@/components/SectionTitle";
 
 const documents = [
   {
@@ -66,6 +66,61 @@ export default function DocumentsPage() {
             </article>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}*/
+
+
+
+
+
+
+import SectionTitle from "@/components/SectionTitle";
+import { getDocuments } from "@/lib/api";
+
+export default async function DocumentsPage() {
+  const documents = await getDocuments();
+
+  return (
+    <section className="section">
+      <div className="container">
+        <SectionTitle
+          eyebrow="DOCUMENTS"
+          title="My Documents"
+          description="Important academic, professional and career documents."
+        />
+
+        {documents.length > 0 ? (
+          <div className="document-grid">
+            {documents.map((document: any) => (
+              <article className="document-card" key={document.id}>
+                <span>{document.category}</span>
+
+                <h3>{document.title}</h3>
+
+                {document.description && (
+                  <p>{document.description}</p>
+                )}
+
+                <a
+                  href={document.fileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Document
+                </a>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className="info-box">
+            <span>Documents</span>
+            <strong>
+              Academic and professional documents will be added here.
+            </strong>
+          </div>
+        )}
       </div>
     </section>
   );
